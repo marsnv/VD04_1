@@ -6,19 +6,16 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-# Хранилище для сообщений микроблога
-posts = []
 
+posts = []
 @app.route('/blog/', methods=['GET', 'POST'])
 def blog():
     if request.method == 'POST':
-        # Получаем текст сообщения из формы
         post_content = request.form.get('content')
         if post_content:
             posts.append(post_content)
         return redirect(url_for('blog'))
     return render_template('blog.html', posts=posts)
-
 
 @app.route("/contacts/")
 def contacts():

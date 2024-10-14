@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Микроблог</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+     <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Главная</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="/blog/">Blog</a>
+        </li>
+       <li class="nav-item">
+            <a class="nav-link" href="/contacts/">Контакты</a>
+        </li>
+    </ul></head>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Микроблог</h1>
+        <form method="post">
+            <div class="form-group">
+                <textarea class="form-control" name="content" rows="3" placeholder="Напишите что-нибудь..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Опубликовать</button>
+        </form>
+        <hr>
+        <div>
+            {% for post in posts %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        {{ post }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
